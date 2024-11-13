@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lernstatus Abfrage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        #result {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lernstatus Abfrage</h1>
+        <label for="person">Gib den Namen ein:</label>
+        <input type="text" id="person" placeholder="z.B. Imar, Martino, Leo">
+        <button onclick="checkLearningStatus()">Frage stellen</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkLearningStatus() {
+            // Eingabe von der Webseite holen und in Kleinbuchstaben umwandeln
+            const name = document.getElementById("person").value.toLowerCase();
+            let response;
+
+            // Überprüfen, ob der Name in der Liste ist und die richtige Antwort zuordnen
+            switch (name) {
+                case 'imar':
+                case 'martino':
+                case 'franci':
+                case 'lukas':
+                case 'harry':
+                    response = "Ja, " + capitalize(name) + " hat heute gelernt.";
+                    break;
+                case 'leo':
+                    response = "Nein, Leo hat heute nicht gelernt.";
+                    break;
+                default:
+                    response = "Diese Person steht nicht auf der Liste.";
+            }
+
+            // Ergebnis auf der Webseite anzeigen
+            document.getElementById("result").innerText = response;
+        }
+
+        // Hilfsfunktion, um den ersten Buchstaben groß zu schreiben
+        function capitalize(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        }
+    </script>
+</body>
+</html>
